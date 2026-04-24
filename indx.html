@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oygul Rustamova | Full-Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --border: rgba(56, 189, 248, 0.2);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        /* --- CHOTKI FON DIZAYNI --- */
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Harakatlanuvchi nurli fon */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            z-index: -1;
+            animation: pulseBg 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseBg {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: rgba(2, 6, 23, 0.8);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            border-bottom: 1px solid var(--border); backdrop-filter: blur(12px);
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a { color: var(--text-dim); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        /* --- SECTIONS --- */
+        section { padding: 120px 8% 80px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .container { max-width: 1200px; width: 100%; margin: 0 auto; }
+
+        /* --- HERO --- */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .hero-text h1 { font-size: clamp(40px, 6vw, 80px); line-height: 1.1; margin-bottom: 20px; }
+        .hero-text span { 
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text p { font-size: 18px; color: var(--text-dim); margin-bottom: 30px; max-width: 600px; }
+
+        .hero-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .info-item { background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
+        .info-item h4 { color: var(--primary); font-size: 12px; text-transform: uppercase; margin-bottom: 5px; }
+
+        .morphing-box {
+            width: 450px; height: 450px; 
+            border: 2px solid var(--primary);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden; animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.2);
+        }
+        .morphing-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 20% 80% / 20% 80% 20% 80%; }
+        }
+
+        /* --- PROJECTS --- */
+        .projects-flex { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .project-card {
+            background: var(--card-bg); border: 1px solid var(--border); padding: 30px;
+            border-radius: 24px; backdrop-filter: blur(10px); transition: 0.4s;
+        }
+        .project-card:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- ELEMENTS --- */
+        input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: rgba(0,0,0,0.3); color: white; margin-bottom: 15px; }
+        .btn { 
+            background: linear-gradient(90deg, #38bdf8, #6366f1);
+            color: white; padding: 14px 30px; border-radius: 12px; 
+            font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+            transition: 0.3s; display: inline-block;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+
+        .math-box { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px; }
+        .math-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+        .math-btns button { padding: 10px; background: #1e293b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; }
+        .math-btns button:hover { background: var(--primary); color: #000; }
+
+        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border); text-align: center; color: white; text-decoration: none; transition: 0.3s; }
+        .card:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--primary); }
+
+        @media (max-width: 1000px) { 
+            .hero { flex-direction: column-reverse; text-align: center; } 
+            .morphing-box { width: 280px; height: 280px; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">OYGUL</a>
+        <ul>
+            <li><a href="#home">Asosiy</a></li>
+            <li><a href="#projects">Loyihalar</a></li>
+            <li><a href="#contact">Aloqa</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>Salom, <br>Man <span>Oygul</span></h1>
+                    <p>Mantiqiy fikrlash va zamonaviy texnologiyalar uyg'unligida raqamli dunyoni quryapman. Har bir qator kod - bu yangi imkoniyat.</p>
+                    <div class="hero-info-grid">
+                        <div class="info-item"><h4>Ism</h4><p>Oygul Rustamova</p></div>
+                        <div class="info-item"><h4>GitHub</h4><p>rustamova12</p></div>
+                        <div class="info-item"><h4>Soha</h4><p>Full-Stack Developer</p></div>
+                        <div class="info-item"><h4>Manzil</h4><p>Xonqa, Xorazm</p></div>
+                    </div>
+                    <a href="#contact" class="btn">Bog'lanish</a>
+                </div>
+                <div class="morphing-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUd8y5x7pKMR2mgKJ89OoVj-OwXgDOMXkfvA&s"  alt="Oygul">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 style="text-align:center; margin-bottom:50px; font-size:36px;">Saralangan Loyihalar</h2>
+            <div class="projects-flex">
+                <div class="project-card">
+                    <h3>Creation AI ✍️</h3>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Intellektual insho generatori</p>
+                    <input type="text" id="topic" placeholder="Mavzuni kiriting...">
+                    <button onclick="generateEssay()" class="btn" style="width: 100%;">Insho Yaratish</button>
+                    <div id="output" style="margin-top:15px; font-size:14px; color:#94a3b8; line-height:1.5;"></div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Matematik Kalkulyator</h3>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Sodda va aniq hisob-kitob</p>
+                    <div class="math-box">
+                        <input type="number" id="num1" placeholder="1-son">
+                        <input type="number" id="num2" placeholder="2-son">
+                        <div class="math-btns">
+                            <button onclick="add()">+</button>
+                            <button onclick="sub()">-</button>
+                            <button onclick="mul()">×</button>
+                            <button onclick="div()">÷</button>
+                        </div>
+                        <p style="margin-top:15px; font-weight:700; color:var(--primary);">Natija: <span id="mathResult">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 style="text-align:center; margin-bottom:50px; font-size:36px;">Men bilan bog'lanish</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <a href="https://github.com/rustamova12" target="_blank" class="card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>rustamova12</p>
+                </a>
+                <a href="mailto:tojibayevlutfulla@gmail.com" class="card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>Yozish uchun bosing</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function generateEssay(){
+            let t = document.getElementById("topic").value;
+            if(!t) return;
+            document.getElementById("output").innerText = t + " mavzusida insho tayyorlanmoqda... \n\n" + t + " - insoniyat taraqqiyotining asosi hisoblanadi. Bugungi kunda bu tushuncha hayotimizning har bir jabhasiga kirib borgan.";
+        }
+
+        function getVals() { return [Number(document.getElementById("num1").value), Number(document.getElementById("num2").value)]; }
+        function add(){ let [a,b] = getVals(); document.getElementById("mathResult").innerText = a + b; }
+        function sub(){ let [a,b] = getVals(); document.getElementById("mathResult").innerText = a - b; }
+        function mul(){ let [a,b] = getVals(); document.getElementById("mathResult").innerText = a * b; }
+        function div(){ let [a,b] = getVals(); document.getElementById("mathResult").innerText = b!=0 ? (a/b).toFixed(2) : "Xato"; }
+    </script>
+</body>
+</html>
